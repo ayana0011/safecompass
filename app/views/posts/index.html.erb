@@ -1,14 +1,17 @@
   <div class="main posts-index">
     <div class="container">
-      <% @posts.each do |post| %>
+      <% @post.each do |post| %>
         <div class="posts-index-item">
-        <% if Post.find_by(id: params[:id]) %>
-        いいね！済み
-      <% else %>
-        いいね！していません
-      <% end %>
-            
-            <%= link_to(post.content,"/posts/#{post.id}") %>
+        <div class="post-left">
+        <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+        <%= link_to("finished", "/likes/#{post.id}/destroy") %>
+          <% else %>
+          <%= link_to("not yet", "/likes/#{post.id}/create") %>
+            <% end %>
+            </div>
+            <div class="post-right">
+            <%= link_to(post.content, "/posts/#{post.id}") %>
+            </div>
         
         </div>
       <% end %>

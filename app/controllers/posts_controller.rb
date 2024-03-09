@@ -2,18 +2,18 @@ class PostsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @posts = Post.where(user_id: @current_user.id).order(created_at: :desc)
+    @post = Post.where(user_id: @current_user.id).order(created_at: :desc)
+    
   end
   
   def show
-    @id= params[:id]
     @post = Post.find_by(id: params[:id])
-    @user = User.find_by(id: @post.user_id)
-    end
+    @user = @post.user
+  end
 
   
     def new 
-      @post = Post.new(published: true)
+      @post = Post.new
     end
 
   def create

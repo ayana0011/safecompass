@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get "checkbox" => "posts#checkbox"
-  post "logout" => "users#logout"
+  post "likes/:post_id/create" => "likes#create"
+  get "likes/:post_id/create" => "likes#create"
+  post "likes/:post_id/destroy" => "likes#destroy"
+  get "likes/:post_id/destroy" => "likes#destroy"
+  post "users/:id/update" => "users#update"
+  get "users/:id/update" => "users#update"
   get "logout" => "users#logout"
   post "login" => "users#login"
   get "login" => "users#login_form"
