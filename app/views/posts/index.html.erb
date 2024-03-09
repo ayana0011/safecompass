@@ -1,9 +1,16 @@
-<div class="main posts-index">
-  <div class="container">
-    <% @posts.each do |post| %>
-      <div class="posts-index-item">
-      <%= link_to(post.content,"/posts/#{post.id}") %>
-      </div>
-    <% end %>
+  <div class="main posts-index">
+    <div class="container">
+      <% @posts.each do |post| %>
+        <div class="posts-index-item">
+        <% if Post.find_by(id: params[:id]) %>
+        いいね！済み
+      <% else %>
+        いいね！していません
+      <% end %>
+            
+            <%= link_to(post.content,"/posts/#{post.id}") %>
+        
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>

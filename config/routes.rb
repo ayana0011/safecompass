@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "checkbox" => "posts#checkbox"
   post "logout" => "users#logout"
   get "logout" => "users#logout"
   post "login" => "users#login"
